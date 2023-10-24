@@ -411,6 +411,35 @@ public:
         }
     }
 
+    static void excluirConsulta(vector<Consulta>&consultas){
+
+            string aux_cpf, aux_crm;
+
+                cout << "Informe o CRM do medico que deseja excluir.";
+                std::cin.ignore();
+                getline(std::cin, aux_crm);
+
+                  for(int i =0; i < consultas.size(); i++){
+                        if(consultas[i].medico->getCrm() == aux_crm)
+          
+                        cout << consultas[i].paciente->getNome() << endl;
+                        cout << consultas[i].paciente->getCpf() << endl;
+                    }
+
+                cout << "Digite o cpf do paciente que deseja excluir" << endl;
+                getline(std::cin, aux_cpf);
+
+            for(int i=0; i < consultas.size(); i++){
+                if(consultas[i].medico->getCrm() == aux_crm && consultas[i].paciente->getCpf() == aux_cpf){
+
+
+                    cout << "Consulta do paciente: " << consultas[i].paciente->getNome() << " Apagada!" << endl;
+                    consultas.erase(consultas.begin() + i);
+                }
+            }
+
+    }
+
 
 };
 
@@ -503,7 +532,7 @@ int main() {
                Consulta::imprimirInformacoesConsulta(consultas);
             }
             if(op == 3){
-              //inserir metodo
+              Consulta::excluirConsulta(consultas);
             }
             if(op == 4){
                //inserir metodo
