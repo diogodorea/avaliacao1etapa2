@@ -36,7 +36,7 @@ public:
         nome = _nome;
     }
 
-    static void ListarPacientes(vector<Paciente> &pacientes) {
+    static void listarPacientes(vector<Paciente> &pacientes) {
     cout << "Listando pacientes..." << endl;
 
     for (int i = 0; i < pacientes.size(); i++) {
@@ -285,51 +285,46 @@ int main() {
     vector<Paciente> pacientes;
     vector<Medico> medicos;
     int op, opcao;
-   
+
     do{
-    cout << "-->Bem vindo<--" << endl;
-    cout << "-->Ao CRM Medico<--" << endl;
-    cout << "-->Digite 1 para acessar o modulo de pacientes<--" << endl;
-    cout << "-->Digite 2 para acessar o modulo de medicos<--" << endl;
-    cout << "-->Digite 0 para sair<--" << endl;
+    cout << "Seja bem ao Sistema de Gestão" << endl << "Clinica Médica Sem Dodói Ltda." << endl << endl;
+    cout << "Escolha uma opção de gerenciamento" << endl << endl;
+    cout << "1. Gestão de Pacientes." << endl;
+    cout << "2. Gestão de Medicos" << endl;
+    cout << "3. Gestão de Consultas. " << endl;
+    cout << "0. Sair do Programa. " << endl;
     std::cin >> opcao;
-  
+
     if(opcao == 1){
+        do {
+            cout << "---------Menu--------" << endl;
+            cout << "1. Incluir paciente" << endl;
+            cout << "2. Excluir Paciente" << endl;
+            cout << "3. Alterar dados paciente" << endl;
+            cout << "4. Listar pacientes" << endl;
+            cout << "5. Buscar paciente especifico" << endl;
+            cout << "0. Sair" << endl;
+            std::cin >> op;
 
-    do {
-        cout << "---------Menu--------" << endl;
-        cout << "1. Incluir paciente" << endl;
-        cout << "2. Excluir Paciente" << endl;
-        cout << "3. Alterar dados paciente" << endl;
-        cout << "4. Listar pacientes" << endl;
-        cout << "5. Buscar paciente especifico" << endl;
-        cout << "0. Sair" << endl;
-        std::cin >> op;
-
-        if (op == 1) {
-           Paciente::incluirPaciente(pacientes);
-        }
-
-        if (op == 2) {
-           Paciente::excluirPaciente(pacientes);
-        }
+            if (op == 1) {
+            Paciente::incluirPaciente(pacientes);
+            }
+            if (op == 2) {
+            Paciente::excluirPaciente(pacientes);
+            }
+            if (op == 3) {
+                Paciente::editarPaciente(pacientes);
+            }
+            if(op == 4){
+                Paciente::listarPacientes(pacientes);
+            }
+            if(op == 5){
+                Paciente::buscarApartirPacientes(pacientes);
+            }
+        } while (op != 0);
+    }
     
-        
-        if (op == 3) {
-          Paciente::editarPaciente(pacientes);
-        }
-
-        if(op == 4){
-            Paciente::ListarPacientes(pacientes);
-        }
-
-        if(op == 5){
-            Paciente::buscarApartirPacientes(pacientes);
-        }
-    } while (op != 0);
-}
-    
-     if(opcao == 2){
+    if(opcao == 2){
         do {
             cout << "---------Menu--------" << endl;
             cout << "1. Incluir Medico" << endl;
@@ -341,17 +336,16 @@ int main() {
             std::cin >> op;
 
             if(op == 1){
-              Medico::adcionarMedicos(medicos);
+                Medico::adcionarMedicos(medicos);
             }
             if(op == 2){
-              Medico::excluirMedico(medicos);
+                Medico::excluirMedico(medicos);
             }
             if(op == 3){
-              Medico::editarDadosMedico(medicos);
+                Medico::editarDadosMedico(medicos);
             }
-
             if(op == 4){
-               Medico::listarMedicos(medicos);
+                Medico::listarMedicos(medicos);
             }
             if(op == 5){
                 Medico::buscarApartirMedicos(medicos);
@@ -359,5 +353,29 @@ int main() {
         } while(op != 0);
     }
 
+    if(opcao == 3){
+        do {
+            cout << "---------Menu de Consultas--------" << endl;
+            cout << "1. Criar Consulta" << endl;
+            cout << "2. Listar Consultas" << endl;
+            cout << "3. Excluir Consulta" << endl;
+            cout << "4. Alterar Consulta" << endl;
+            std::cin >> op;
+
+            if (op == 1) {
+               //inserir metodo
+            }
+            if(op == 2){
+               //inserir metodo
+            }
+            if(op == 3){
+              //inserir metodo
+            }
+            if(op == 4){
+               //inserir metodo
+            }
+                
+        } while (op != 0);
+    }
     }while(opcao != 0);
 }
