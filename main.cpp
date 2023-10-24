@@ -53,33 +53,33 @@ public:
          string aux_cpf,aux_nome,aux_dt_nascimento;
          int op2;
 
-            cout << "Informe o paciente que deseja alterar pelo cpf";
-            std::cin.ignore();
-            getline(std::cin, aux_cpf);
+            cout << "Informe o paciente que deseja alterar pelo CPF: " << endl;
+            cin.ignore();
+            getline(cin, aux_cpf);
 
             for (int i = 0; i < pacientes.size(); i++) {
                 if (aux_cpf == pacientes[i].getCpf()) {
-                    cout << pacientes[i].getNome()<< endl;
-                    cout << pacientes[i].getCpf() << endl;
-                    cout << pacientes[i].getDt_nascimento() << endl;
+                    cout << "Nome: " << pacientes[i].getNome()<< endl;
+                    cout << "CPF: " << pacientes[i].getCpf() << endl;
+                    cout << "Data Nascimento: " << pacientes[i].getDt_nascimento() << endl;
 
                     cout << "Deseja alterar o nome? (1-Sim/2-Nao)" << endl;
-                    std::cin >> op2;
+                    cin >> op2;
                 
                     if(op2 == 1){
                         cout << "Digite o novo nome: " << endl;
-                        std::cin.ignore();
-                        getline(std::cin, aux_nome);
+                        cin.ignore();
+                        getline(cin, aux_nome);
                         pacientes[i].setNome(aux_nome);
                     }
 
                     cout << "Deseja alterar a data de nascimento? (1-Sim/2-Nao)" << endl;
-                    std::cin >> op2;
+                    cin >> op2;
 
                     if(op2 == 1){
                         cout << "Digite a nova data de nascimento: " << endl;
-                        std::cin.ignore();
-                        getline(std::cin, aux_dt_nascimento);
+                        cin.ignore();
+                        getline(cin, aux_dt_nascimento);
                         pacientes[i].setDt_nascimento(aux_dt_nascimento);
                     }
 
@@ -94,9 +94,9 @@ public:
          string aux_cpf;
          bool pacienteEncontrado = false;
 
-            cout << "Informe o cpf do paciente que deseja Excluir...";
-            std::cin.ignore();
-            getline(std::cin, aux_cpf);
+            cout << "Informe o CPF do paciente que deseja Excluir..." << endl;
+            cin.ignore();
+            getline(cin, aux_cpf);
 
             for (int i = 0; i < pacientes.size(); i++) {
                 if (aux_cpf == pacientes[i].getCpf()) {
@@ -107,21 +107,21 @@ public:
                 }
             }
             if (!pacienteEncontrado) {
-                cout << "Paciente com o cpf:  " << aux_cpf << "  Nao encontrado!" << endl;
+                cout << "Paciente com o CPF:  " << aux_cpf << "  Nao encontrado!" << endl;
             }
     }
 
     static void incluirPaciente(vector<Paciente>&pacientes){
          string aux_nome, aux_cpf, aux_dt_nascimento;
          cout << "Informe o nome: " << endl;
-            std::cin.ignore();
-            getline(std::cin, aux_nome);
+            cin.ignore();
+            getline(cin, aux_nome);
 
             cout << "Informe o cpf: " << endl;
-            getline(std::cin, aux_cpf);
+            getline(cin, aux_cpf);
 
-            cout << "Informe a data de Nascimento: ";
-            getline(std::cin, aux_dt_nascimento);
+            cout << "Informe a data de Nascimento: " << endl;
+            getline(cin, aux_dt_nascimento);
 
             Paciente novoPaciente(aux_nome, aux_cpf, aux_dt_nascimento);
             pacientes.push_back(novoPaciente);
@@ -132,8 +132,8 @@ public:
         bool aux_flag = false;
 
         cout << "Insira o cpf para buscar a pessoa" << endl;
-        std::cin.ignore();
-        getline(std::cin, aux_cpf);
+        cin.ignore();
+        getline(cin, aux_cpf);
 
         for(int i = 0;i < pacientes.size(); i++){
             if(pacientes[i].getCpf() == aux_cpf){
@@ -185,8 +185,8 @@ public:
             string aux_crm;
 
          cout << "Digite o crm do medico que deseja ecluir" << endl;
-                std::cin.ignore();
-                getline(std::cin, aux_crm);
+                cin.ignore();
+                getline(cin, aux_crm);
 
                 for(int i = 0; i < medicos.size(); i++){
                     if(aux_crm == medicos[i].getCrm()){
@@ -201,8 +201,8 @@ public:
         
                 int valida;
                 cout << "Selecione o medico que deseja alterar a partir do CRM";
-                std::cin.ignore();
-                getline(std::cin, aux_crm);
+                cin.ignore();
+                getline(cin, aux_crm);
 
                 for(int i = 0; i < medicos.size(); i++){
                     if(aux_crm == medicos[i].getCrm()){
@@ -210,21 +210,21 @@ public:
                         cout << medicos[i].getCrm() << endl;
                         cout << medicos[i].getEspecialidade() << endl;
 
-                        cout << "Deseja alterar o nome do Medico?  (1-SIM/2-NAO)";
-                        std::cin >> valida;
+                        cout << "Deseja alterar o nome do Medico?  (1-SIM/2-NAO)" << endl;
+                        cin >> valida;
                         if(valida == 1){
                             cout << "Digite o novo nome do medico: " << endl;
-                            std::cin.ignore();
-                            getline(std::cin, aux_nome);
+                            cin.ignore();
+                            getline(cin, aux_nome);
                             medicos[i].setNome(aux_nome);
                         }
 
-                        cout << "Deseja alterar a especialidade do Medico? (1-SIM/2-NAO)";
-                        std::cin >> valida;
+                        cout << "Deseja alterar a especialidade do Medico? (1-SIM/2-NAO)" << endl;
+                        cin >> valida;
                         if(valida == 1){
                             cout << "Digite a nova especialidade do medico: " << endl;
-                            std::cin.ignore();
-                            getline(std::cin, aux_especialidade);
+                            cin.ignore();
+                            getline(cin, aux_especialidade);
                             medicos[i].setEspecialidade(aux_especialidade);
                         }
                     }
@@ -245,14 +245,14 @@ public:
     static void adcionarMedicos(vector<Medico>&medicos){
         string aux_nome, aux_especialidade, aux_crm;
         cout << "Digite o nome do Medico" << endl;
-                std::cin.ignore();
-                getline(std::cin, aux_nome);
+                cin.ignore();
+                getline(cin, aux_nome);
 
                 cout << "Digite a especialidade: " << endl;
-                getline(std::cin, aux_especialidade);
+                getline(cin, aux_especialidade);
 
                 cout << "Digite o CRM do profissional: " << endl;
-                getline(std::cin, aux_crm);
+                getline(cin, aux_crm);
 
                 Medico novoMedico(aux_crm, aux_nome, aux_especialidade);
                 medicos.push_back(novoMedico);
@@ -263,8 +263,8 @@ public:
         bool aux_flag = false;
 
         cout << "Insira o crm para buscar a pessoa" << endl;
-        std::cin.ignore();
-        getline(std::cin, aux_crm);
+        cin.ignore();
+        getline(cin, aux_crm);
 
         for(int i = 0;i < medicos.size(); i++){
             if(medicos[i].getCrm() == aux_crm){
@@ -347,11 +347,11 @@ public:
         char  aux_realizada = 'n';
 
         cout << "Informe o CPF do paciente: ";
-        std::cin.ignore();
-        getline(std::cin, aux_cpf);
+        cin.ignore();
+        getline(cin, aux_cpf);
 
-        cout << "Informe o CRM do médico: ";
-        getline(std::cin, aux_crm);
+        cout << "Informe o CRM do medico: ";
+        getline(cin, aux_crm);
 
        
         Paciente* paciente = nullptr;
@@ -370,21 +370,21 @@ public:
             }
         }
         if (paciente && medico) {
-            // Crie a consulta e adicione-a à lista de consultas
+            
             cout << "Informe a data da consulta: ";
-            getline(std::cin, aux_dataConsulta);
+            getline(cin, aux_dataConsulta);
 
             cout << "Informe a hora da consulta: ";
-            getline(std::cin, aux_horaConsulta);
+            getline(cin, aux_horaConsulta);
 
             cout << "Informe a duracao da consulta que deseja: ";
-            getline(std::cin, aux_duracaoConsulta);
+            getline(cin, aux_duracaoConsulta);
 
             Consulta novaConsulta(paciente, medico, aux_dataConsulta, aux_horaConsulta, aux_duracaoConsulta, aux_realizada, aux_convenio);
             consultas.push_back(novaConsulta);
             cout << "Consulta criada com sucesso!" << endl;
         } else {
-            cout << "Paciente ou médico não encontrado. Verifique o CPF e o CRM." << endl;
+            cout << "Paciente ou medico não encontrado. Verifique o CPF e o CRM." << endl;
         }
     }
 
@@ -398,9 +398,9 @@ public:
                 cout << "Paciente: " << consultas[i].paciente->getNome() << endl;
                 cout << "CPF do Paciente: " << consultas[i].paciente->getCpf() << endl;
                 cout << "Data de Nascimento do Paciente: " << consultas[i].paciente->getDt_nascimento() << endl;
-                cout << "Médico: " << consultas[i].medico->getNome() << endl;
-                cout << "CRM do Médico: " << consultas[i].medico->getCrm() << endl;
-                cout << "Especialidade do Médico: " << consultas[i].medico->getEspecialidade() << endl;
+                cout << "Medico: " << consultas[i].medico->getNome() << endl;
+                cout << "CRM do Medico: " << consultas[i].medico->getCrm() << endl;
+                cout << "Especialidade do Medico: " << consultas[i].medico->getEspecialidade() << endl;
                 cout << "data da consulta: " << consultas[i].getData() << endl;
                 cout << "Horario da consulta: " << consultas[i].getHora() << endl;
                 cout << "duracao da consulta: " << consultas[i].getDuracao() << endl;
@@ -416,18 +416,18 @@ public:
             string aux_cpf, aux_crm;
 
                 cout << "Informe o CRM do medico que deseja excluir.";
-                std::cin.ignore();
-                getline(std::cin, aux_crm);
+                cin.ignore();
+                getline(cin, aux_crm);
 
-                  for(int i =0; i < consultas.size(); i++){
+                for(int i =0; i < consultas.size(); i++){
                         if(consultas[i].medico->getCrm() == aux_crm)
           
                         cout << consultas[i].paciente->getNome() << endl;
                         cout << consultas[i].paciente->getCpf() << endl;
                     }
 
-                cout << "Digite o cpf do paciente que deseja excluir" << endl;
-                getline(std::cin, aux_cpf);
+                cout << "Digite o CPF do paciente que deseja excluir" << endl;
+                getline(cin, aux_cpf);
 
             for(int i=0; i < consultas.size(); i++){
                 if(consultas[i].medico->getCrm() == aux_crm && consultas[i].paciente->getCpf() == aux_cpf){
@@ -440,6 +440,68 @@ public:
 
     }
 
+    static void alterarConsulta(vector<Consulta>&consultas){
+
+        string aux_crm, aux_cpf, aux_data, aux_hora, aux_duracao, aux_convenio;
+        string aux_realizada;
+
+        cout << "Digite o CRM do medico para listar as consultas";
+        cin.ignore();
+        getline(cin, aux_crm);
+
+        for(int j =0; j < consultas.size(); j++){
+            if(consultas[j].medico->getCrm() == aux_crm){
+                cout << "Nome: "<< consultas[j].paciente->getNome() << endl;
+                cout << "CPF: "<< consultas[j].paciente->getCpf() << endl;
+                cout << " - - - -" << endl;
+            }
+        }           
+
+        cout << "Digite o CPF do paciente que deseja alterar: " << endl;
+        getline(cin, aux_cpf);
+
+        for(int i=0; i < consultas.size(); i++){
+            if(consultas[i].paciente->getCpf() == aux_cpf){
+                cout << "Consulta ja realizada? Digite (s/n)" << endl;
+                getline(cin, aux_realizada);
+
+                if(aux_realizada == "s"){
+                    consultas[i].setValida('s');
+                    break;
+                    }else{
+                        cout << "Deseja alterar a Data? (s/n)";
+                        getline(cin, aux_realizada);
+                        if(aux_realizada == "s"){
+                            cout << "Digite a nova data ";
+                            getline(cin, aux_data); 
+                            consultas[i].setData(aux_data);
+                        }
+                        cout << "Deseja alterar a Hora? (s/n)";
+                        getline(cin, aux_realizada);
+                        if(aux_realizada == "s"){
+                            cout << "Digite a nova hora";
+                            getline(cin, aux_hora); 
+                            consultas[i].setHora(aux_hora);
+                        }
+                        cout << "Deseja alterar a duracao da consulta? (s/n)";
+                        getline(cin, aux_realizada);
+                        if(aux_realizada == "s"){
+                            cout << "Digite a nova duracao";
+                            getline(cin, aux_duracao); 
+                            consultas[i].setDuracao(aux_duracao);
+                        }
+                        cout << "Deseja alterar o convenio? (s/n)";
+                        getline(cin, aux_convenio);
+                        if(aux_convenio == "s"){
+                            cout << "Digite o convenio: " << endl;
+                            getline(cin, aux_convenio);
+                            consultas[i].setConvenio(aux_convenio);
+                        }
+                        }
+            }
+        }
+    }
+
 
 };
 
@@ -450,13 +512,13 @@ int main() {
     int op, opcao;
 
     do{
-    cout << "Seja bem ao Sistema de Gestão" << endl << "Clinica Médica Sem Dodói Ltda." << endl << endl;
+    cout << "Seja bem ao Sistema de Gestao" << endl << "Clinica Medica Sem Dodoi Ltda." << endl << endl;
     cout << "Escolha uma opção de gerenciamento" << endl << endl;
-    cout << "1. Gestão de Pacientes." << endl;
-    cout << "2. Gestão de Medicos" << endl;
-    cout << "3. Gestão de Consultas. " << endl;
+    cout << "1. Gestao de Pacientes." << endl;
+    cout << "2. Gestao de Medicos" << endl;
+    cout << "3. Gestao de Consultas. " << endl;
     cout << "0. Sair do Programa. " << endl;
-    std::cin >> opcao;
+    cin >> opcao;
 
     if(opcao == 1){
         do {
@@ -467,7 +529,7 @@ int main() {
             cout << "4. Listar pacientes" << endl;
             cout << "5. Buscar paciente especifico" << endl;
             cout << "0. Sair" << endl;
-            std::cin >> op;
+            cin >> op;
 
             if (op == 1) {
             Paciente::incluirPaciente(pacientes);
@@ -496,7 +558,7 @@ int main() {
             cout << "4. Listar Medicos" << endl;
             cout << "5. Buscar medico especifico" << endl;
             cout << "0. Sair" << endl;
-            std::cin >> op;
+            cin >> op;
 
             if(op == 1){
                 Medico::adcionarMedicos(medicos);
@@ -523,7 +585,7 @@ int main() {
             cout << "2. Listar Consultas" << endl;
             cout << "3. Excluir Consulta" << endl;
             cout << "4. Alterar Consulta" << endl;
-            std::cin >> op;
+            cin >> op;
 
             if (op == 1) {
                Consulta::incluirConsulta(pacientes, medicos, consultas);
@@ -535,9 +597,8 @@ int main() {
               Consulta::excluirConsulta(consultas);
             }
             if(op == 4){
-               //inserir metodo
+               Consulta::alterarConsulta(consultas);
             }
-                
         } while (op != 0);
     }
     }while(opcao != 0);
