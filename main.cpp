@@ -281,9 +281,72 @@ public:
 
 };
 
+class Consulta{
+
+    Paciente* paciente;
+    Medico* medico;
+
+    char valida = 'n';
+    string data, hora, duracao, convenio;
+
+public:
+
+    char getValida() {
+        return valida;
+    }
+
+    void setValida(char _valida) {
+        valida = _valida;
+    }
+
+    string getConvenio() {
+        return convenio;
+    }
+
+    void setConvenio(char _convenio) {
+        convenio = _convenio;
+    }
+
+    string getData() {
+        return data;
+    }
+
+    void setData(string _data) {
+        data = _data;
+    }
+
+    string getHora() {
+        return hora;
+    }
+
+    void setHora(string _hora) {
+        hora = _hora;
+    }
+
+    string getDuracao() {
+        return duracao;
+    }
+
+    void setDuracao(string _duracao) {
+        duracao = _duracao;
+    }
+
+    void setConvenio(string _convenio) {
+        convenio = _convenio;
+    }
+
+    Consulta(Paciente* _paciente, Medico* _medico, string _data, string _hora, string _duracao, char _valida, string _convenio) : paciente(_paciente), medico(_medico), data(_data), hora(_hora), duracao(_duracao), valida(_valida), convenio(_convenio) {}
+
+    static Consulta criarConsulta(Paciente* paciente, Medico* medico, string data, string hora, string duracao, char valida, string convenio) {
+        return Consulta(paciente, medico, data, hora, duracao, valida, convenio);
+    }
+
+};
+
 int main() {
     vector<Paciente> pacientes;
     vector<Medico> medicos;
+    vector<Consulta> consultas;
     int op, opcao;
 
     do{
