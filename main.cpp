@@ -440,6 +440,68 @@ public:
 
     }
 
+    static void alterarConsulta(vector<Consulta>&consultas){
+
+        string aux_crm, aux_cpf, aux_data, aux_hora, aux_duracao, aux_convenio;
+        string aux_realizada;
+
+        cout << "Digite o CRM do medico para listar as consultas";
+        std::cin.ignore();
+        getline(std::cin, aux_crm);
+
+        for(int j =0; j < consultas.size(); j++){
+            if(consultas[j].medico->getCrm() == aux_crm){
+                cout << "Nome: "<< consultas[j].paciente->getNome() << endl;
+                cout << "Cpf: "<< consultas[j].paciente->getCpf() << endl;
+                cout << " - - - -" << endl;
+            }
+        }           
+
+        cout << "Digite o cpf do paciente que deseja alterar";
+        getline(std::cin, aux_cpf);
+
+        for(int i=0; i < consultas.size(); i++){
+            if(consultas[i].paciente->getCpf() == aux_cpf){
+                cout << "Consulta já realizada? Digite (s/n)" << endl;
+                getline(std::cin, aux_realizada);
+
+                if(aux_realizada == "s"){
+                    consultas[i].setValida('s');
+                    break;
+                    }else{
+                        cout << "Deseja alterar a Data? (s/n)";
+                        getline(std::cin, aux_realizada);
+                        if(aux_realizada == "s"){
+                            cout << "Digite a nova data ";
+                            getline(std::cin, aux_data); 
+                            consultas[i].setData(aux_data);
+                        }
+                        cout << "Deseja alterar a Hora? (s/n)";
+                        getline(std::cin, aux_realizada);
+                        if(aux_realizada == "s"){
+                            cout << "Digite a nova hora";
+                            getline(std::cin, aux_hora); 
+                            consultas[i].setHora(aux_hora);
+                        }
+                        cout << "Deseja alterar a duracao da consulta? (s/n)";
+                        getline(std::cin, aux_realizada);
+                        if(aux_realizada == "s"){
+                            cout << "Digite a nova duracao";
+                            getline(std::cin, aux_duracao); 
+                            consultas[i].setDuracao(aux_duracao);
+                        }
+                        cout << "Deseja alterar o convenio? (s/n)";
+                        getline(std::cin, aux_convenio);
+                        if(aux_convenio == "s"){
+                            cout << "Digite o convenio";
+                            getline(std::cin, aux_convenio);
+                            consultas[i].setConvenio(aux_convenio);
+                        }
+                        }
+            }
+        }
+    }
+
 
 };
 
@@ -535,9 +597,8 @@ int main() {
               Consulta::excluirConsulta(consultas);
             }
             if(op == 4){
-               //inserir metodo
+               Consulta::alterarConsulta;
             }
-                
         } while (op != 0);
     }
     }while(opcao != 0);
