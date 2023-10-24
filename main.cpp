@@ -341,6 +341,77 @@ public:
         return Consulta(paciente, medico, data, hora, duracao, valida, convenio);
     }
 
+    static void incluirConsulta(vector<Paciente>&pacientes, vector<Medico>&medicos, vector<Consulta>&consultas){
+        
+        string aux_cpf, aux_crm, aux_dataConsulta, aux_horaConsulta, aux_duracaoConsulta, aux_convenio = "Dindin Para Viver";
+        char  aux_realizada = 'n';
+
+        cout << "Informe o CPF do paciente: ";
+        std::cin.ignore();
+        getline(std::cin, aux_cpf);
+
+        cout << "Informe o CRM do médico: ";
+        getline(std::cin, aux_crm);
+
+       
+        Paciente* paciente = nullptr;
+        Medico* medico = nullptr;
+
+        for (Paciente &p : pacientes) {
+            if (p.getCpf() == aux_cpf) {
+                paciente = &p;
+                break;
+            }
+        }
+        for (Medico &m : medicos) {
+            if (m.getCrm() == aux_crm) {
+                medico = &m;
+                break;
+            }
+        }
+        if (paciente && medico) {
+            // Crie a consulta e adicione-a à lista de consultas
+            cout << "Informe a data da consulta: ";
+            getline(std::cin, aux_dataConsulta);
+
+            cout << "Informe a hora da consulta: ";
+            getline(std::cin, aux_horaConsulta);
+
+            cout << "Informe a duracao da consulta que deseja: ";
+            getline(std::cin, aux_duracaoConsulta);
+
+            Consulta novaConsulta(paciente, medico, aux_dataConsulta, aux_horaConsulta, aux_duracaoConsulta, aux_realizada, aux_convenio);
+            consultas.push_back(novaConsulta);
+            cout << "Consulta criada com sucesso!" << endl;
+        } else {
+            cout << "Paciente ou médico não encontrado. Verifique o CPF e o CRM." << endl;
+        }
+    }
+
+    static void imprimirInformacoesConsulta(vector<Consulta> &consultas) {
+
+        if (consultas.empty()) {
+            cout << "Nenhuma consulta registrada." << endl;
+        } else {
+            cout << "Informações das consultas:" << endl;
+            for (int i = 0; i < consultas.size(); i++) {
+                cout << "Paciente: " << consultas[i].paciente->getNome() << endl;
+                cout << "CPF do Paciente: " << consultas[i].paciente->getCpf() << endl;
+                cout << "Data de Nascimento do Paciente: " << consultas[i].paciente->getDt_nascimento() << endl;
+                cout << "Médico: " << consultas[i].medico->getNome() << endl;
+                cout << "CRM do Médico: " << consultas[i].medico->getCrm() << endl;
+                cout << "Especialidade do Médico: " << consultas[i].medico->getEspecialidade() << endl;
+                cout << "data da consulta: " << consultas[i].getData() << endl;
+                cout << "Horario da consulta: " << consultas[i].getHora() << endl;
+                cout << "duracao da consulta: " << consultas[i].getDuracao() << endl;
+                cout << "Convenio: " << consultas[i].getConvenio() << endl;
+                cout << "Consulta realizada?" << consultas[i].getValida() << endl;
+                cout << "------------------------" << endl;
+            }
+        }
+    }
+
+
 };
 
 int main() {
@@ -426,10 +497,10 @@ int main() {
             std::cin >> op;
 
             if (op == 1) {
-               //inserir metodo
+               Consulta::incluirConsulta(pacientes, medicos, consultas);
             }
             if(op == 2){
-               //inserir metodo
+               Consulta::imprimirInformacoesConsulta(consultas);
             }
             if(op == 3){
               //inserir metodo
